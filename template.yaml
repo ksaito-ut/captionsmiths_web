@@ -57,7 +57,7 @@ body:
     text: |
       ### Method
       <img
-        src="./public/method.png"
+        src="method.png"
         class="uk-align-center uk-responsive-width"
         alt=""
       />
@@ -70,7 +70,7 @@ body:
        ***Evaluating descriptiveness control***
        <div class="uk-text-center">
        <img
-       src="./public/clip_score.png"
+       src="clip_score.png"
        class="uk-align-center uk-responsive-width"
        width="350px"
         alt="CLIPScore comparison across different captioning methods"
@@ -81,7 +81,7 @@ body:
       </div>
       <div class="uk-text-center">
        <img
-       src="./public/example_descriptiveness.png"
+       src="example_descriptiveness.png"
        width="3000px"
        class="uk-align-center uk-responsive-width"
         alt="CLIPScore comparison across different captioning methods"
@@ -100,7 +100,7 @@ body:
       ***Evaluating uniqueness control***
       <div class="uk-text-center">
        <img
-       src="./public/example_uniqueness.png"
+       src="example_uniqueness.png"
        width="3000px"
        class="uk-align-center uk-responsive-width"
         alt="CLIPScore comparison across different captioning methods"
