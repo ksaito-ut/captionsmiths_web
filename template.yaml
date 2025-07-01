@@ -1,0 +1,142 @@
+theme: default # default || dark
+organization: OMRON SINIC X
+twitter: '@omron_sinicx'
+title: 'CaptionSmiths: Flexibly Controlling Language Pattern in Image Captioning'
+conference: ICCV2025
+resources:
+  paper: 'TBA'
+  poster: 
+  code: https://github.com/omron-sinicx/captionsmiths
+description: 
+image: https://omron-sinicx.github.io/${your-repository-name}/teaser.png
+url: https://omron-sinicx.github.io/captionsmiths
+speakerdeck: 
+authors:
+  - name: Kuniaki Saito
+    affiliation: [1]
+    url: https://ksaito-ut.github.io/
+    position: Senior Researcher
+  - name: Donghyun Kim
+    affiliation: [2]
+    position: Assistant Professor
+    url: https://cs-people.bu.edu/donhk/
+  - name: Kwanyong Park
+    affiliation: [3]
+    position: Assistant Professor
+    url: https://pkyong95.github.io/
+  - name: Atsushi Hashimoto
+    affiliation: [1]
+    url: https://atsushihashimoto.github.io/cv/
+    position: Senior Researcher
+  - name: Yoshitaka Ushiku
+    affiliation: [1]
+    url: https://yoshitakaushiku.net/
+    position: Vice President for Research    
+
+contact_ids: ['github', 'omron', 1] #=> github issues, contact@sinicx.com, 2nd author
+affiliations:
+  - OMRON SINIC X Corporation
+  - Korea University
+  - University of Seoul
+bibtex: >
+  # arXiv version
+
+header:
+  bg_curve:
+    sinic_curve.png
+    #  bg_image: https://github.com/omron-sinicx/swarm-body/raw/main/images/teaser.jpg
+
+teaser: teaser.png
+overview: |
+ CaptionSmiths is a controllable image captioning framework that allows smooth adjustment of caption properties such as length, descriptiveness, and word uniqueness—within a single model.
+ Unlike existing models, which lack explicit conditioning and struggle with smooth transitions between styles, CaptionSmiths quantifies these properties as continuous scalar values and interpolates between learned endpoint representations (e.g., very short ↔ very long).
+ This enables fine-grained control over caption styles. Experiments show that CaptionSmiths not only improves lexical alignment, but also reduces caption length control error by over 500% compared to strong baselines.
+
+body: 
+  - title: CaptionSmiths
+    text: |
+      ### Method
+      <img
+        src="public/method.png"
+        class="uk-align-center uk-responsive-width"
+        alt=""
+      />
+      Overview during training (left) and inference (right). <b> Left: </b> We compute conditioning values for each caption in Condition Calculator. The conditions are converted into token embeddings via Condition Encoding. Then, the learnable parameters are trained to control the language pattern in the output caption. <b> Right : </b>  In inference, users can either manually specify the conditioning scalars or employ an example language pattern as a sentence. 
+      Here's our demo text showcasing the power of markdown and KaTeX integration!
+      Markdown allows you to easily format text using simple syntax.
+
+      ### Results
+
+       ***Evaluating descriptiveness control***
+       <div class="uk-text-center">
+       <img
+       src="public/clip_score.png"
+       class="uk-align-center uk-responsive-width"
+       width="350px"
+        alt="CLIPScore comparison across different captioning methods"
+      />
+      <p class="uk-text-muted">
+        Figure: Increasing the input value corresponding to descriptiveness improves CLIPScore.
+      </p>
+      </div>
+      <div class="uk-text-center">
+       <img
+       src="public/example_descriptiveness.png"
+       width="3000px"
+       class="uk-align-center uk-responsive-width"
+        alt="CLIPScore comparison across different captioning methods"
+      />
+      <p class="uk-text-muted">
+        Figure: Results of varying descriptiveness score in caption generation.
+      </p>
+      </div>
+     
+      <br>
+      The graph above shows the qualittive results of controlling descriptiveness of captions. 
+      Increasing the value improves the CLIPScore. The figure shows the examples of generated captions in varying the descriptiveness condition.
+      Increasing the value tends to output more descriptive captions.
+
+
+      ***Evaluating uniqueness control***
+      <div class="uk-text-center">
+       <img
+       src="public/example_uniqueness.png"
+       width="3000px"
+       class="uk-align-center uk-responsive-width"
+        alt="CLIPScore comparison across different captioning methods"
+      />
+      <p class="uk-text-muted">
+        Figure: Results of varying descriptiveness score in caption generation.
+      </p>
+      </div>
+      
+      <br>
+      CaptionSmiths also controls the uniqueness in the vocabulary of output captions. The example above shows the results of outputting fine-grained words to describe entities in images.
+              
+      ***Evaluation on lexical alignment***
+      <table class="uk-table uk-table-small uk-text-small uk-table-divider" style="border-top: 1px solid black; border-bottom: 1px solid black; border-collapse: collapse;">
+
+        <thead  style="text-align: center">
+          <tr>
+            <th>Models</th>
+            <th style="border-right: 0px solid black;">Parameter<br>Size</th>
+            <th>MSCOCO<br>(Short)</th>
+            <th>LN COCO<br>(Middle)</th>
+            <th>Docci<br>(Long)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>LLaVA-1.5</td><td style="border-right: 0px solid black;">7.1B</td><td>0.0</td><td>1.1</td><td>2.4</td></tr>
+          <tr><td>Blip-3</td><td style="border-right: 0px solid black;">4.6B</td><td>57.5</td><td>2.0</td><td>3.6</td></tr>
+          <tr><td>Qwen2-VL-7B</td><td style="border-right: 0px solid black;">8.3B</td><td>84.3</td><td>3.8</td><td>5.5</td></tr>
+          <tr><td>Vanilla Supervised</td><td style="border-right: 0px solid black;">21.3B</td><td>96.6</td><td>23.6</td><td>1.4</td></tr>
+          <tr><td>Fine-tuned LLaVA-1.5</td><td style="border-right: 0px solid black;">21.3B</td><td>98.3</td><td>23.9</td><td>9.1</td></tr>
+          <tr><td>Vanilla</td><td style="border-right: 0px solid black;">7.1B</td><td>13.2</td><td>21.7</td><td>7.5</td></tr>
+          <tr><td>Concap</td><td style="border-right: 0px solid black;">7.1B</td><td>95.9</td><td>23.5</td><td>8.3</td></tr>
+          <tr><td><b>CaptionSmiths</b></td><td style="border-right: 0px solid black;">7.1B</td><td><b>104.8</b></td><td><b>37.4</b></td><td><b>29.7</b></td></tr>
+        </tbody>
+      </table>
+      CaptionSmiths is a single model with 7.1B parameter size, but can handles generation of diverse captions. 
+
+
+
