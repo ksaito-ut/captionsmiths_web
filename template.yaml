@@ -2,9 +2,9 @@ theme: default # default || dark
 organization: OMRON SINIC X
 twitter: '@omron_sinicx'
 title: 'CaptionSmiths: Flexibly Controlling Language Pattern in Image Captioning'
-conference: ICCV2025
+conference: ICCV2025 (Highlight)
 resources:
-  paper: 'TBA'
+  paper: https://arxiv.org/pdf/2507.01409
   poster: 
   code: https://github.com/omron-sinicx/captionsmiths
 description: 
